@@ -4,7 +4,7 @@ argocd-apps:
     namespace: argocd
     generators:
     - git:
-        repoURL: 
+        repoURL: https://github.com/vippr1237/argocd_handons.git
         revision: HEAD
         directories:
         - path: default/*
@@ -16,7 +16,7 @@ argocd-apps:
       spec:
         project: "default"
         source:
-          repoURL: 
+          repoURL: https://github.com/vippr1237/argocd_handons.git
           targetRevision: HEAD
           path: '{{path}}'
         destination:
@@ -31,7 +31,7 @@ argocd-apps:
     namespace: argocd
     generators:
     - git:
-        repoURL: 
+        repoURL: https://github.com/vippr1237/argocd_handons.git
         revision: HEAD
         directories:
         - path: apps/*
@@ -41,7 +41,7 @@ argocd-apps:
       spec:
         project: "default"
         source:
-          repoURL: 
+          repoURL: https://github.com/vippr1237/argocd_handons.git
           targetRevision: HEAD
           path: '{{path}}'
         destination:
@@ -56,7 +56,7 @@ argocd-apps:
     namespace: argocd
     generators:
     - git:
-        repoURL: 
+        repoURL: https://github.com/vippr1237/argocd_handons.git
         revision: HEAD
         directories:
         - path: default/argocd-apps
@@ -66,7 +66,7 @@ argocd-apps:
       spec:
         project: "default"
         source:
-          repoURL: 
+          repoURL: https://github.com/vippr1237/argocd_handons.git
           targetRevision: HEAD
           path: '{{path}}'
         destination:
