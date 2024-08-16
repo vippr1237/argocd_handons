@@ -1,0 +1,6 @@
+dependencies:
+- name: microservice
+  repository: https://charts.ruan.dev
+  version: 3.1.1
+digest: sha256:f09d50505aac32fa367096181bb387c8f352830a15f5604fb2e8df291c09dfe8
+generated: "2024-08-16T14:41:49.38081887+07:00"

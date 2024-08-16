@@ -1,0 +1,5 @@
+microservice:
+  replicaCount: 3
+  env:
+    vars:
+      APP_TITLE: "Welcome"
