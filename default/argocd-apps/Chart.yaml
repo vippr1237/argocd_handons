@@ -1,0 +1,9 @@
+apiVersion: v2
+name: argocd-apps
+description: ArgoCD Apps
+type: application
+version: 1.6.1
+dependencies:
+- name: argocd-apps
+  version: 1.6.1
+  repository: https://argoproj.github.io/argo-helm

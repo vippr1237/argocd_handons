@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  labels:
+    argocd.argoproj.io/instance: argocd-apps
+  name: argocd-apps
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      directories:
+      - path: default/argocd-apps
+      repoURL: https://github.com/ruanbekker/argocd-hashnode-demo
+      revision: HEAD
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      destination:
+        namespace: argocd
+        server: https://kubernetes.default.svc
+      project: default
+      source:
+        path: '{{path}}'
+        repoURL: https://github.com/ruanbekker/argocd-hashnode-demo
+        targetRevision: HEAD
+      syncPolicy:
+        automated: {}
+        syncOptions:
+        - CreateNamespace=true

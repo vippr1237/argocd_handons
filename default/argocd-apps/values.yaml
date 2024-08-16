@@ -1,0 +1,78 @@
+argocd-apps:
+  applicationsets:
+  - name: default
+    namespace: argocd
+    generators:
+    - git:
+        repoURL: https://github.com/vippr1237/argocd_handons.git
+        revision: HEAD
+        directories:
+        - path: default/*
+        - path: default/argocd-apps
+          exclude: true
+    template:
+      metadata:
+        name: '{{path.basename}}'
+      spec:
+        project: "default"
+        source:
+          repoURL: https://github.com/vippr1237/argocd_handons.git
+          targetRevision: HEAD
+          path: '{{path}}'
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: '{{path.basename}}'
+        syncPolicy:
+          automated: {}
+          syncOptions:
+          - CreateNamespace=true
+
+  - name: apps
+    namespace: argocd
+    generators:
+    - git:
+        repoURL: https://github.com/vippr1237/argocd_handons.git
+        revision: HEAD
+        directories:
+        - path: apps/*
+    template:
+      metadata:
+        name: '{{path.basename}}'
+      spec:
+        project: "default"
+        source:
+          repoURL: https://github.com/vippr1237/argocd_handons.git
+          targetRevision: HEAD
+          path: '{{path}}'
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: '{{path.basename}}'
+        syncPolicy:
+          automated: {}
+          syncOptions:
+          - CreateNamespace=true
+
+  - name: argocd-apps
+    namespace: argocd
+    generators:
+    - git:
+        repoURL: https://github.com/vippr1237/argocd_handons.git
+        revision: HEAD
+        directories:
+        - path: default/argocd-apps
+    template:
+      metadata:
+        name: '{{path.basename}}'
+      spec:
+        project: "default"
+        source:
+          repoURL: https://github.com/vippr1237/argocd_handons.git
+          targetRevision: HEAD
+          path: '{{path}}'
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: argocd
+        syncPolicy:
+          automated: {}
+          syncOptions:
+          - CreateNamespace=true
